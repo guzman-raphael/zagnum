@@ -1,4 +1,4 @@
-# Sample Implementation - NPEP
+# Sample Implementation - PEPN (Postgres, Express, Polymer, Node)
 
 ## Clean everything
 docker stop $(docker ps -a -q) && docker system prune -fa
