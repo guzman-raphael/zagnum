@@ -1,5 +1,15 @@
 # Sample Implementation - PEPN (Postgres, Express, Polymer, Node)
 
+## Exposed containers
+web
+be
+
+## necessary running containers
+web
+db
+be
+
+
 ## Clean everything
 docker stop $(docker ps -a -q) && docker system prune -fa
 

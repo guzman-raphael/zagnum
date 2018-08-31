@@ -1,0 +1,57 @@
+version: '3'
+services:
+  db:
+    restart: always
+    build:
+      context: ./db
+    image: postgres_service
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+      - env_vars:/common
+
+  be:
+    build:
+      context: ./be
+    image: be_service
+    # restart: always
+    volumes:
+      - ./be/src:/app/src:delegated
+      - app_node_modules:/app/node_modules
+      - env_vars:/common
+    # ports: # stop for peer simulation on host
+    #   - "8080:8080"
+    # links:
+    #   - pg_rg:test
+
+  web:
+    build:
+      context: ./web
+    image: web_service
+    restart: always
+    volumes:
+      - ./web/src:/app/src:delegated
+      - app_node_modules:/app/node_modules
+      - env_vars:/common
+    ports: # stop for peer simulation on host
+      - "8080:8080"
+    # links:
+    #   - pg_rg:test
+
+
+  #
+  # web:
+  #   build:
+  #     context: ./application
+  #   image: dash-code-challange-application
+  #   working_dir: ${PWD}/application
+  #   volumes:
+  #     - ./application:${PWD}/application:delegated
+  #     # this is a workaround to prevent host node_modules from accidentally getting mounted in container
+  #     # in case you want to use node/npm both outside container for test/lint etc. and also inside container
+  #     # this will overwrite the default node_modules dir in container so it won't conflict with our
+  #     # /node_modules location.
+  #     - app_node_modules:${PWD}/application/node_modules
+
+volumes:
+  app_node_modules:
+  env_vars:

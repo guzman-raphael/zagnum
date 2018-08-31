@@ -1,0 +1,15 @@
+{
+  "name": "zagnum_fe",
+  "version": "1.0.0",
+  "description": "serve web app.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node --inspect=0.0.0.0:9229 src/svr/app",
+    "test": "node --inspect-brk=0.0.0.0:9229 src/svr/app"
+  },
+  "author": "Raphael Guzman",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}

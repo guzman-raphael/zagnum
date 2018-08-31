@@ -1,0 +1,19 @@
+{
+  "name": "zagnum_be",
+  "version": "1.0.0",
+  "description": "application web services.",
+  "main": "maybe.js",
+  "scripts": {
+    "start": "node --inspect=0.0.0.0:9229 src/maybe",
+    "test": "node --inspect-brk=0.0.0.0:9229 src/maybe"
+  },
+  "author": "Raphael Guzman",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "pg": "^7.4.3",
+    "request": "^2.87.0"
+  }
+}
